@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NUR Gift — Подарочные боксы</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__row">
+    <a class="logo" href="index.html">NUR<span>Gift</span></a>
+
+    <nav class="nav nav-scroll">
+      <a href="index.html" class="nav__link is-active">Главная</a>
+      <a href="menu.html" class="nav__link">Товары</a>
+      <a href="cart.html" class="nav__link">Корзина</a>
+      <a href="checkout.html" class="nav__link">Оформление</a>
+    
+      <!-- индикатор -->
+      <span class="nav-indicator"></span>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero card">
+    <div class="hero__text">
+      <h1>Подарочные боксы NUR Gift</h1>
+      <p class="muted">
+        Готовые подарки для любого повода: день рождения, Новый год, для неё, для него и детей.
+        Быстрое оформление и доставка по Казахстану.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn" href="menu.html">Перейти к товарам</a>
+        <a class="btn btn--ghost" href="cart.html">Открыть корзину</a>
+      </div>
+
+      <div class="badges">
+        <span class="badge">Алматы • Шымкент • Астана</span>
+        <span class="badge">Оплата при получении</span>
+        <span class="badge">Поддержка менеджера</span>
+      </div>
+    </div>
+
+    <!-- СТАТИСТИКА КОРЗИНЫ -->
+    <div class="hero__box">
+      <div class="hero__stat">
+        <div class="hero__statNum" id="statItems">0</div>
+        <div class="hero__statLabel">товаров в корзине</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__statNum" id="statTotal">0 ₸</div>
+        <div class="hero__statLabel">сумма заказа</div>
+      </div>
+      <div class="divider"></div>
+      <p class="small muted">
+        Добавь товары и перейди в корзину для оформления.
+      </p>
+    </div>
+  </section>
+
+  <!-- ИНФО БЛОКИ -->
+  <section class="grid">
+
+    <article class="card">
+      <h3>Как заказать</h3>
+      <ol class="list">
+        <li>Перейди в раздел «Товары»</li>
+        <li>Добавь нужные боксы в корзину</li>
+        <li>В корзине измени количество</li>
+        <li>Заполни данные и отправь заказ менеджеру</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h3>Доставка</h3>
+      <p class="muted">
+        Бесплатная доставка по Алматы, Шымкенту и Астане.  
+        В другие города — по договорённости.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Контакты</h3>
+      <p class="muted">
+        WhatsApp: <strong>+7 771 322 65 75</strong><br>
+        Instagram: <strong>@nur.gift</strong><br>
+        Работаем ежедневно
+      </p>
+    </article>
+
+  </section>
+</main>
+
+<section class="card" style="margin:40px 0;text-align:center">
+  <h2>Готовы выбрать подарок?</h2>
+  <p class="muted">
+    Мы уже собрали лучшие подарочные боксы — тебе осталось только выбрать.
+  </p>
+  <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="menu.html" class="btn">Перейти к товарам</a>
+    <a href="cart.html" class="btn btn--ghost">Открыть корзину</a>
+  </div>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h3>🎁 Готовые решения</h3>
+    <p class="muted">Не нужно думать — мы уже собрали идеальные подарки.</p>
+  </article>
+
+  <article class="card">
+    <h3>🚚 Быстрая доставка</h3>
+    <p class="muted">Алматы, Шымкент, Астана — бесплатно.</p>
+  </article>
+
+  <article class="card">
+    <h3>💬 Живой менеджер</h3>
+    <p class="muted">После заказа с тобой свяжется человек, не бот.</p>
+  </article>
+</section>
+
+<section class="card" style="margin-top:30px">
+  <h3>Частые вопросы</h3>
+
+  <p><strong>Можно ли изменить состав бокса?</strong><br>
+  <span class="muted">Да, укажи пожелания в комментарии при оформлении.</span></p>
+
+  <p><strong>Как быстро доставляете?</strong><br>
+  <span class="muted">В тот же день или на следующий — по договорённости.</span></p>
+
+  <p><strong>Как происходит оплата?</strong><br>
+  <span class="muted">Оплата при получении или по согласованию.</span></p>
+</section>
+
+<footer class="container" style="margin:50px auto 100px;text-align:center">
+  <div class="divider"></div>
+  <p class="muted small">
+    © 2025 <strong>NUR Gift</strong> — подарочные боксы<br>
+    Алматы • Шымкент • Астана
+  </p>
+  <p class="muted small">
+    WhatsApp: +7 771 322 65 75 · Instagram: @nur.gift
+  </p>
+</footer>
+
+<!-- КРУГЛАЯ КОРЗИНА -->
+<a href="cart.html" class="cart-fab">
+  <span class="cart-fab__icon">🛒</span>
+  <span class="cart-fab__count" id="cartCount">0</span>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>

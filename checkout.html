@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оформление — NUR Gift</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__row">
+    <a class="logo" href="index.html">NUR<span>Gift</span></a>
+    <nav class="nav">
+      <a href="menu.html" class="nav__link">Товары</a>
+      <a href="cart.html" class="nav__link">Корзина</a>
+      <a href="checkout.html" class="nav__link is-active">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="page-title">
+    <h1>Оформление заказа</h1>
+    <p class="muted">Заполни данные — заказ отправится менеджеру</p>
+  </section>
+
+  <section class="grid-2">
+    <!-- ФОРМА -->
+    <form id="checkoutForm" class="card">
+      <h3>Ваши данные</h3>
+
+      <label class="label">Имя</label>
+      <input name="name" class="input" required placeholder="Например: Нурсыл">
+
+      <label class="label">Телефон</label>
+      <input name="phone" class="input" required placeholder="+7...">
+
+      <label class="label">Адрес / город</label>
+      <input name="address" class="input" required placeholder="Город, улица, дом">
+
+      <label class="label">Комментарий</label>
+      <textarea name="comment" class="input" placeholder="Размеры, цвет, удобное время..."></textarea>
+
+      <button class="btn w-full" type="submit">Отправить менеджеру</button>
+    </form>
+
+    <!-- ПРЕВЬЮ ЗАКАЗА -->
+    <div class="card">
+      <h3>Ваш заказ</h3>
+      <div id="orderPreview" class="order-preview"></div>
+      <div class="divider"></div>
+      <div class="row-between">
+        <strong>Итого:</strong>
+        <strong id="checkoutTotal">0 ₸</strong>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

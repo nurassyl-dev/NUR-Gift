@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Товары — NUR Gift</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__row">
+      <a class="logo" href="index.html">NUR<span>Gift</span></a>
+
+      <nav class="nav nav-scroll">
+        <a href="index.html" class="nav__link">Главная</a>
+        <a href="menu.html" class="nav__link is-active">Товары</a>
+        <a href="cart.html" class="nav__link">Корзина</a>
+        <a href="checkout.html" class="nav__link">Оформление</a>
+      
+        <!-- индикатор -->
+        <span class="nav-indicator"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-title">
+      <h1>Подарочные боксы</h1>
+      <p class="muted">
+        Бесплатная доставка по Алматы, Шымкенту и Астане. В другие города — платно.
+      </p>
+    </section>
+
+    <section class="toolbar card">
+      <input id="searchInput" class="input" placeholder="Поиск: комфорт, люкс, мужской..." />
+      <select id="categorySelect" class="input">
+        <option value="all">Все сеты</option>
+        <!-- категории добавит JS -->
+      </select>
+      <select id="sortSelect" class="input">
+        <option value="popular">Сначала популярные</option>
+        <option value="price_asc">Цена: дешевле</option>
+        <option value="price_desc">Цена: дороже</option>
+      </select>
+    </section>
+
+    <!-- СЮДА JS ВСТАВИТ 30 ТОВАРОВ -->
+    <section id="productsGrid" class="products"></section>
+  </main>
+
+  <!-- КРУГЛАЯ КОРЗИНА (пока просто кнопка, JS потом оживит) -->
+  <a href="cart.html" class="cart-fab" id="cartFab">
+    <span class="cart-fab__icon">🛒</span>
+    <span class="cart-fab__count" id="cartCount">0</span>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>

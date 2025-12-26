@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Корзина — NUR Gift</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__row">
+    <a class="logo" href="index.html">NUR<span>Gift</span></a>
+    <nav class="nav">
+      <a href="menu.html" class="nav__link">Товары</a>
+      <a href="cart.html" class="nav__link is-active">Корзина</a>
+      <a href="checkout.html" class="nav__link">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="page-title">
+    <h1>Корзина</h1>
+    <p class="muted">Проверь товары перед оформлением</p>
+  </section>
+
+  <section class="card">
+    <div id="cartList" class="cart-list"></div>
+
+    <div class="divider"></div>
+
+    <div class="row-between">
+      <strong>Итого:</strong>
+      <strong id="cartTotal">0 ₸</strong>
+    </div>
+
+    <div class="divider"></div>
+
+    <a href="checkout.html" class="btn w-full">Оформить заказ</a>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
