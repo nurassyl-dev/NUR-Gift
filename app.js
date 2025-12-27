@@ -102,7 +102,9 @@ function initMenuPage(){
       const el = document.createElement("article");
       el.className = "product";
       el.innerHTML = `
-        <div class="product__img" style="background-image:url('${p.img}')"></div>
+        <div class="product__img">
+          <img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async">
+        </div>
         <h3>${p.title}</h3>
         <p class="muted">${p.desc}</p>
         <strong>${p.price.toLocaleString()} ${CURRENCY}</strong><br><br>
@@ -110,6 +112,7 @@ function initMenuPage(){
       `;
       grid.appendChild(el);
     });
+    applyRevealToProducts(grid);
   }
 
   render();
@@ -289,6 +292,89 @@ function updateHeroStats(){
     if (itemsEl) itemsEl.textContent = items;
     if (totalEl) totalEl.textContent = total.toLocaleString() + " ₸";
   } 
+
+  // ===== REVEAL ANIMATIONS =====
+  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let revealObserver = null;
+  let horizontalObserver = null;
+  let horizontalRoot = null;
+
+  function handleReveal(entries, observer){
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }
+
+  function ensureRevealObserver(){
+    if (prefersReducedMotion || revealObserver || !("IntersectionObserver" in window)) return;
+    revealObserver = new IntersectionObserver(handleReveal, {
+      threshold: 0.2,
+      rootMargin: "0px 0px -10% 0px"
+    });
+  }
+
+  function getHorizontalObserver(root){
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) return null;
+    if (horizontalObserver && horizontalRoot === root) return horizontalObserver;
+
+    horizontalRoot = root;
+    horizontalObserver = new IntersectionObserver(handleReveal, {
+      root,
+      threshold: 0.35,
+      rootMargin: "0px 40px 0px 40px"
+    });
+
+    return horizontalObserver;
+  }
+
+  function prepareReveal(el, index, direction){
+    if (!el) return;
+    el.classList.add("reveal");
+    if (!el.dataset.anim) el.dataset.anim = direction;
+    if (!el.style.getPropertyValue("--delay")){
+      const delay = Math.min(index * 0.05, 0.3);
+      el.style.setProperty("--delay", `${delay}s`);
+    }
+  }
+
+  function observeReveal(el, observer){
+    if (prefersReducedMotion || !("IntersectionObserver" in window) || !observer){
+      el.classList.add("is-visible");
+      return;
+    }
+    observer.observe(el);
+  }
+
+  function applyRevealToProducts(grid){
+    if (!grid) return;
+    ensureRevealObserver();
+
+    const cards = Array.from(grid.querySelectorAll(".product"));
+    if (!cards.length) return;
+
+    const useHorizontal = grid.scrollWidth > grid.clientWidth + 8;
+    const observer = useHorizontal ? getHorizontalObserver(grid) : revealObserver;
+
+    cards.forEach((card, index) => {
+      const direction = index % 2 === 0 ? "left" : "right";
+      prepareReveal(card, index, direction);
+      observeReveal(card, observer);
+    });
+  }
+
+  function initRevealAnimations(){
+    document.body.classList.add("has-reveal");
+    ensureRevealObserver();
+
+    const staticTargets = document.querySelectorAll(".card, .page-title, .toolbar");
+    staticTargets.forEach((el, index) => {
+      const direction = index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right";
+      prepareReveal(el, index, direction);
+      observeReveal(el, revealObserver);
+    });
+  }
   
   // ===== FOLLOW GLOW EFFECT =====
 const glowElements = document.querySelectorAll(".card, .product, .btn");
@@ -332,6 +418,7 @@ selectableCards.forEach(card => {
 
   // ================= INIT =================
   document.addEventListener("DOMContentLoaded", () => {
+    if (typeof initRevealAnimations === "function") initRevealAnimations();
     if (typeof initMenuPage === "function") initMenuPage();
     if (typeof initCartPage === "function") initCartPage();
     if (typeof initCheckoutPage === "function") initCheckoutPage();
